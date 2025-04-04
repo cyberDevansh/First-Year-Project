@@ -1,0 +1,518 @@
+/*............................. Root Variables (Light Mode)......................... */
+:root {
+    --primary-color: #008CBA;
+    --secondary-color: #2c3e50;
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --sidebar-width: 250px;
+    --transition-speed: 0.7s;
+    --card-bg: #f5f5f5;
+    --input-bg: #ffffff;
+    --border-color: #e0e0e0;
+    --nav-text-color: #ffffff;
+    --nav-hover-glow: #4a90e2;
+}
+
+/* .............................Dark Mode Variables................................. */
+[data-theme="dark"] {
+    --primary-color: #64b5f6;
+    --secondary-color: #1a1a1a;
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --card-bg: #2d2d2d;
+    --input-bg: #333333;
+    --border-color: #404040;
+    --nav-text-color: #ffffff;
+    --nav-hover-glow: #64b5f6;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    line-height: 1.6;
+}
+
+/* ..............Introduction Slides........................ */
+
+.intro-slides {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity var(--transition-speed);
+}
+
+.intro-slides.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.slide {
+    position: absolute;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-speed), transform var(--transition-speed);
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*.................................. Container Layout....................... */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ........................Sidebar Styles........................ */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    position: fixed;
+    height: 100vh;
+    transition: transform var(--transition-speed);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo h2 {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    margin-bottom: 1rem;
+}
+
+.nav-links a {
+    color: var(--nav-text-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    border-radius: 8px;
+    transition: all var(--transition-speed);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-links a i {
+    margin-right: 1rem;
+    color: var(--primary-color);
+    transition: all var(--transition-speed);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background-color: rgba(74, 144, 226, 0.1);
+    color: var(--nav-hover-glow);
+    text-shadow: 0 0 10px var(--nav-hover-glow);
+}
+
+.nav-links a:hover i,
+.nav-links a.active i {
+    color: var(--nav-hover-glow);
+    text-shadow: 0 0 10px var(--nav-hover-glow);
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(74, 144, 226, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.nav-links a:hover::before {
+    left: 100%;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--nav-hover-glow);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/*.............................................Main Content..................................... */
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding: 2rem;
+    position: relative;
+}
+
+/* ..........................Theme Switch..................... */
+.theme-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.bulb {
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 20px var(--primary-color);
+    transition: transform var(--transition-speed);
+}
+
+.bulb:hover {
+    transform: scale(1.1);
+}
+
+.bulb i {
+    font-size: 24px;
+    color: white;
+}
+
+/*.............................. Content Styles................... */
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ............................Tool Cards.......................... */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tool-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform var(--transition-speed);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+}
+
+.tool-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/*................................. Feature Cards............................ */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform var(--transition-speed);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* .....................................Our Team  ........................*/
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.team-member {
+    text-align: center;
+}
+
+.member-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1rem;
+    color: var(--primary-color);
+    font-size: 5rem;
+}
+
+/* ...............................Contact Section ...........................*/
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact-item i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+/* .........................Social Links................. */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icon {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    transition: transform var(--transition-speed);
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+}
+
+/*........................... Thank You Page.................... */
+.thank-you-section {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.thank-you-section i {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* ........................Feedback Form............................. */
+.feedback-form {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+/*................... Rating Stars........................... */
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    cursor: pointer;
+    color: #ddd;
+    font-size: 1.5rem;
+    transition: color var(--transition-speed);
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+    color: #ffd700;
+}
+
+/* ...........................Submit Button.............................. */
+.submit-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform var(--transition-speed);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* .............................Share Buttons........................ */
+.share-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.share-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform var(--transition-speed);
+}
+
+.share-btn.twitter {
+    background-color: #1DA1F2;
+    color: white;
+}
+
+.share-btn.linkedin {
+    background-color: #0077B5;
+    color: white;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+}
+
+/*........................... File Upload Area..................... */
+.upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color var(--transition-speed);
+}
+
+.upload-area:hover {
+    border-color: var(--primary-color);
+}
+
+.upload-area i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* ............................Mobile Menu Button....................... */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ...................................Responsive Design ............................*/
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .tools-grid,
+    .features-grid,
+    .team-grid,
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+
+    .share-buttons {
+        flex-direction: column;
+    }
+}
+
+/*................................... Page Transitions ...............................*/
+.page-transition {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-speed), transform var(--transition-speed);
+}
+
+.page-transition.active {
+    opacity: 1;
+    transform: translateY(0);
+} 

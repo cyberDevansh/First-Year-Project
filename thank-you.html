@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>धर्मो रक्षति रक्षितः - Thank-you</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h2><i class="fa fa-cog fa-spin"></i> CyberTools</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="keylogger.html"><i class="fas fa-keyboard"></i> Keylogger</a></li>
+                <li><a href="steganography.html"><i class="fas fa-user-secret"></i> Steganography</a></li>
+                <li><a href="pass-manager.html"><i class="fas fa-user-secret"></i> Password Manager</a></li>
+                <li><a href="pass-manager.html"><i class="fas fa-user-secret"></i> Password Generator</a></li>
+                <li><a href="malware-detector.html"><i class="fas fa-user-secret"></i> Malware Detector</a></li>
+                <li><a href="developers.html"><i class="fas fa-info-circle"></i> Developers</a></li>
+                <li><a href="thank-you.html"><i class="fas fa-heart"></i> Thank You</a></li>
+            </ul>
+        </nav>
+
+        <!-- ..............Main Content Area................... -->
+        <main class="main-content">
+            <div class="theme-switch">
+                <div class="bulb">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+            </div>
+
+            <div class="content page-transition">
+                <div class="thank-you-section">
+                    <i class="fas fa-heart"></i>
+                    <h1>Thank You!</h1>
+                    <p>We appreciate your interest in our cybersecurity tools. Your support helps us continue developing educational resources for the community.</p>
+                </div>
+
+                <div class="feedback-section">
+                    <h2>Share Your Experience</h2>
+                    <p>We'd love to hear your thoughts about our tools and how they've helped you learn about cybersecurity.</p>
+
+                    <form class="feedback-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tool">Favorite Tool</label>
+                            <select id="tool" name="tool" required>
+                                <option value="">Select a tool</option>
+                                <option value="keylogger">Keylogger</option>
+                                <option value="steganography">Steganography</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rating">Rating</label>
+                            <div class="rating">
+                                <input type="radio" id="star5" name="rating" value="5">
+                                <label for="star5"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1"><i class="fas fa-star"></i></label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feedback">Your Feedback</label>
+                            <textarea id="feedback" name="feedback" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Feedback
+                        </button>
+                    </form>
+                </div>
+
+                <div class="social-share">
+                    <h2>Share with Others</h2>
+                    <p>Help others discover our educational cybersecurity tools</p>
+                    <div class="share-buttons">
+                        <button class="share-btn twitter">
+                            <i class="fab fa-twitter"></i> Share on Twitter
+                        </button>
+                        <button class="share-btn linkedin">
+                            <i class="fab fa-linkedin"></i> Share on LinkedIn
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
